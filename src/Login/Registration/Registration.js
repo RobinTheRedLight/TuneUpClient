@@ -20,7 +20,28 @@ const Registration = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(slot);
+        const allUsers = {
+            userName: name,
+            userType: slot,
+            userPicture: photoURL,
+            userEmail: email
+        }
+
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(allUsers)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged) {
+                    alert(' Registered successfully')
+                }
+            })
+            .catch(er => console.error(er));
 
         createUser(email, password)
             .then(result => {
