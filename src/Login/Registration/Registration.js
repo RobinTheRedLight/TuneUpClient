@@ -24,7 +24,8 @@ const Registration = () => {
             userName: name,
             userType: slot,
             userPicture: photoURL,
-            userEmail: email
+            userEmail: email.toLowerCase()
+
         }
 
         fetch('http://localhost:5000/users', {

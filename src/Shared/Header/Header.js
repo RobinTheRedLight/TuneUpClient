@@ -1,11 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { FaUser } from 'react-icons/fa';
 import toast, { Toaster } from 'react-hot-toast';
+import useAdmin from '../../hooks/useAdmin';
+import useSeller from '../../hooks/useSeller';
 
 const Header = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut, loading } = useContext(AuthContext);
+
+    console.log(user?.email);
+    const [isAdmin] = useAdmin(user?.email);
+    const [isSeller] = useSeller(user?.email);
+    console.log(isAdmin, isSeller);
+    if (loading) {
+        return <h1>Loading</h1>
+    };
+
+
     const handleLogOut = () => {
         logOut()
             .then(() => { })
@@ -101,6 +113,9 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
+                    <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                    </label>
                 </div>
             </div>
         </div >
