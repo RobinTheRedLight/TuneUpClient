@@ -50,8 +50,9 @@ export const router = createBrowserRouter([
                 element: <SellerRoute> <AddProduct></AddProduct></SellerRoute>
             },
             {
-                path: '/dashboard/myproducts',
-                element: <MyProducts></MyProducts>
+                path: '/dashboard/myproducts/:email',
+                element: <SellerRoute><MyProducts></MyProducts></SellerRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.email}`)
             },
 
         ]

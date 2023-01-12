@@ -62,7 +62,7 @@ const AddProduct = () => {
             })
             .catch(er => console.error(er));
 
-        navigate("/dashboard/myproducts");
+        navigate(`/dashboard/myproducts/${user.email}`);
     }
 
     if (loading) {

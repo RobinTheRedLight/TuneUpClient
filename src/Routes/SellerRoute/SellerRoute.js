@@ -4,9 +4,13 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import useSeller from '../../hooks/useSeller';
 
 const SellerRoute = ({ children }) => {
-    const { user } = useContext(AuthContext);
-    const [isSeller] = useSeller(user?.email);
+    const { user, loading } = useContext(AuthContext);
+    const [isSeller, isSellerLoading] = useSeller(user?.email);
     const location = useLocation();
+
+    if ( loading || isSellerLoading) {
+        return <h1>Loading</h1>
+    }
 
     if (user && isSeller) {
         return children;
