@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { FaUser } from 'react-icons/fa';
@@ -75,7 +75,7 @@ const Header = () => {
                     </div>
                     <Link className=' font-mono text-white btn btn-ghost normal-case sm:text-2xl' to='/'>Robin's Law Desk</Link>
                     <div className="w-10">
-                        <img src="logo.png" />
+                        <img src="logo.png" alt=''/>
                     </div>
                 </div>
 

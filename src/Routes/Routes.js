@@ -3,8 +3,13 @@ import DashboardLayout from "../layout/DashboardLayout.js/DashboardLayout";
 import Main from "../layout/Main";
 import LoginPage from "../Login/LoginPage/LoginPage";
 import Registration from "../Login/Registration/Registration";
+import AddProduct from "../Pages/AddProduct/AddProduct";
+import Dashboard from "../Pages/Dashboard/Dashboard";
 import Home from "../Pages/Home/Home";
+import MyProducts from "../Pages/MyProducts/MyProducts";
 import Product from "../Pages/Product/Product";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import SellerRoute from "./SellerRoute/SellerRoute";
 
 export const router = createBrowserRouter([
 
@@ -36,27 +41,19 @@ export const router = createBrowserRouter([
         path: '/dashboard',
         element: <DashboardLayout></DashboardLayout>,
         children: [
-            // {
-            //     path: '/dashboard',
-            //     element: <MyAppointment></MyAppointment>
-            // },
-            // {
-            //     path: '/dashboard/allusers',
-            //     element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
-            // },
-            // {
-            //     path: '/dashboard/adddoctor',
-            //     element: <AdminRoute><AddDoctor></AddDoctor></AdminRoute>
-            // },
-            // {
-            //     path: '/dashboard/managedoctors',
-            //     element: <AdminRoute><ManageDoctors></ManageDoctors></AdminRoute>
-            // },
-            // {
-            //     path: '/dashboard/payment/:id',
-            //     element: <Payment></Payment>,
-            //     loader: ({ params }) => fetch(`https://doctors-portal-server-rust.vercel.app/bookings/${params.id}`)
-            // },
+            {
+                path: '/dashboard',
+                element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+            },
+            {
+                path: '/dashboard/addproduct',
+                element: <SellerRoute> <AddProduct></AddProduct></SellerRoute>
+            },
+            {
+                path: '/dashboard/myproducts',
+                element: <MyProducts></MyProducts>
+            },
+
         ]
     }
 

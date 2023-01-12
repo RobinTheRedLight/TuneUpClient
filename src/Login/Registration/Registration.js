@@ -39,7 +39,7 @@ const Registration = () => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-                    alert(' Registered successfully')
+                    console.log(' Registered successfully')
                 }
             })
             .catch(er => console.error(er));
