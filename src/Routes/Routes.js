@@ -67,7 +67,6 @@ export const router = createBrowserRouter([
                 element: <AdminRoute> <AllBuyers></AllBuyers> </AdminRoute>,
                 loader: () => fetch('http://localhost:5000/users')
             },
-
         ]
     }
 
