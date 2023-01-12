@@ -7,8 +7,12 @@ import Header from '../../Shared/Header/Header';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
-    const [isAdmin] = useAdmin(user?.email)
-    const [isSeller] = useSeller(user?.email)
+    const [isAdmin] = useAdmin(user?.email);
+    const [isSeller] = useSeller(user?.email);
+
+    if (!user) {
+        return <h1>Loading</h1>
+    }
     return (
         <div>
             <Header></Header>
@@ -24,9 +28,9 @@ const DashboardLayout = () => {
                         {
                             isAdmin &&
                             <>
-                                <li><Link to="/dashboard/allusers">All Sellers</Link></li>
-                                <li><Link to="/dashboard/adddoctor">All Buyers</Link></li>
-                                <li><Link to="/dashboard/managedoctors">Reported Items</Link></li>
+                                <li><Link to="/dashboard/allsellers">All Sellers</Link></li>
+                                <li><Link to="/dashboard/allbuyers">All Buyers</Link></li>
+                                <li><Link>Reported Items</Link></li>
                             </>
                         }
 

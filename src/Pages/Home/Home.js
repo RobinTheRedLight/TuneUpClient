@@ -89,7 +89,7 @@ const Home = () => {
                                                     <h2 className="text-xl">{d.name}</h2>
                                                     <p className='text-justify'>{d.description}</p>
                                                     <div className="card-actions">
-                                                        <Link to={`/categories/${d._id}`}>
+                                                        <Link to={`/categories/${d.name}`}>
                                                             <button className="w-full btn btn-primary">Products</button>
                                                         </Link>
                                                     </div>

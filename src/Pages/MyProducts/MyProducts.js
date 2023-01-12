@@ -1,27 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const MyProducts = () => {
     const orderData = useLoaderData();
-    console.log(orderData);
+    const { loading, user } = useContext(AuthContext);
+
     return (
         <div>
             <div className='p-2 grid grid-cols-3 gap-4'>
                 {
                     orderData.map(d =>
-                        <div key={d._id} className="card w-96 bg-base-100 shadow-xl">
-                            <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                        <div className="card w-96 bg-base-100 shadow-xl">
+                            <figure><img className='w-72 h-72' src={d.photo} alt="" /></figure>
                             <div className="card-body">
                                 <h2 className="card-title">
-                                    Shoes!
-                                    <div className="badge badge-secondary">NEW</div>
+                                    {d.productName}
+                                    <div className="badge badge-secondary">Resale</div>
                                 </h2>
-                                <p>If a dog chews shoes whose shoes does he choose?</p>
+                                <div className='text-left'>
+                                    <p><span className='text-xl font-mono'>Price: </span> <span className='font-mono'>{d.price} Tk</span></p>
+                                </div>
+
                                 <div className="card-actions justify-end">
-                                    <div className="badge badge-outline">Fashion</div>
-                                    <div className="badge badge-outline">Products</div>
-                                    <div className="badge badge-outline">Fashion</div>
-                                    <div className="badge badge-outline">Products</div>
+                                    <button className="btn btn-primary">Delete</button>
+                                    <button className="btn btn-primary">Advertise</button>
                                 </div>
                             </div>
                         </div>

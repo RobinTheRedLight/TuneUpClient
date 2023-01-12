@@ -27,6 +27,8 @@ const AddProduct = () => {
         const date = form.date.value;
         const category = form.category.value;
         const description = form.description.value;
+        const oprice = form.oprice.value;
+        const year = form.year.value;
 
         const products = {
             productName: pname,
@@ -41,7 +43,9 @@ const AddProduct = () => {
             userName: user.displayName,
             userType: 'Buyer',
             userPicture: user.photoURL,
-            userEmail: user.email.toLowerCase()
+            userEmail: user.email.toLowerCase(),
+            oprice: oprice,
+            year: year
         }
 
         console.log(products);
@@ -112,6 +116,16 @@ const AddProduct = () => {
                         <div className="form-control mt-2 w-96">
                             <label className="input-group">
                                 <input name="photo" type="url" placeholder="photoURL" required className="w-full sm:text-left text-center  input input-bordered input-md" />
+                            </label>
+                        </div>
+                        <div className="form-control mt-2 w-96">
+                            <label className="input-group">
+                                <input name="oprice" type="text" placeholder="Original Price" required className="w-full sm:text-left text-center  input input-bordered input-md" />
+                            </label>
+                        </div>
+                        <div className="form-control mt-2 w-96">
+                            <label className="input-group">
+                                <input name="year" type="number" placeholder="Years of use" required className="w-full sm:text-left text-center  input input-bordered input-md" />
                             </label>
                         </div>
                         <div className="form-control mt-2 w-96">

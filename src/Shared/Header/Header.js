@@ -16,8 +16,6 @@ const Header = () => {
     if (loading) {
         return <h1>Loading</h1>
     };
-
-
     const handleLogOut = () => {
         logOut()
             .then(() => { })
@@ -75,7 +73,7 @@ const Header = () => {
                     </div>
                     <Link className=' font-mono text-white btn btn-ghost normal-case sm:text-2xl' to='/'>Robin's Law Desk</Link>
                     <div className="w-10">
-                        <img src="logo.png" alt=''/>
+                        <img src="logo.png" alt='' />
                     </div>
                 </div>
 
