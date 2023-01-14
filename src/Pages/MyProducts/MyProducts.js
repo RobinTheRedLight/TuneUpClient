@@ -1,17 +1,39 @@
 import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import toast, { Toaster } from 'react-hot-toast';
 
 const MyProducts = () => {
     const orderData = useLoaderData();
     const { loading, user } = useContext(AuthContext);
+
+    if (!user && loading) {
+        return <progress className="progress w-56"></progress>
+    }
+
+    const handleAdvertise = e => {
+
+        fetch(`http://localhost:5000/adData/${e}`, {
+            method: 'PUT'
+        })
+            .then(res => res.json())
+            .then(data => {
+
+                if (data.acknowledged) {
+                    toast.success('Advertised!', {
+                        duration: 700
+                    });
+                }
+            })
+            .catch(er => console.error(er));
+    }
 
     return (
         <div>
             <div className='p-2 grid grid-cols-2 gap-4'>
                 {
                     orderData.map(d =>
-                        <div className="card w-96 bg-base-100 shadow-xl">
+                        <div key={d._id} className="card w-96 bg-base-100 shadow-xl">
                             <figure><img className='w-72 h-72' src={d.photo} alt="" /></figure>
                             <div className="card-body">
                                 <h2 className="card-title">
@@ -24,7 +46,8 @@ const MyProducts = () => {
 
                                 <div className="card-actions justify-end">
                                     <button className="btn btn-primary">Delete</button>
-                                    <button className="btn btn-primary">Advertise</button>
+                                    <button onClick={() => handleAdvertise(d._id)} className="btn btn-primary">Advertise</button>
+                                    <Toaster />
                                 </div>
                             </div>
                         </div>

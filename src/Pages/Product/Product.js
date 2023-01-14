@@ -14,7 +14,7 @@ const Product = () => {
             
                 {
                     products.map(d =>
-                        <div className="card w-96 bg-base-100 shadow-xl">
+                        <div key={d._id} className="card w-96 bg-base-100 shadow-xl">
                             <figure><img className='w-72 h-72' src={d.photo} alt="" /></figure>
                             <div className="card-body">
                                 <h2 className="card-title">
@@ -47,7 +47,7 @@ const Product = () => {
                                                         </label>
                                                         <label className="input-group">
                                                             <span className='hidden sm:inline-flex'>Full Name</span>
-                                                            <input type="text" id="name" name="name" value={user.displayName} readonly required className="w-full sm:text-left text-center sm:w-80 input input-bordered" />
+                                                            <input type="text" id="name" name="name" value={user.displayName} readOnly required className="w-full sm:text-left text-center sm:w-80 input input-bordered" />
                                                         </label>
                                                     </div>
 
@@ -57,7 +57,7 @@ const Product = () => {
                                                         </label>
                                                         <label className="input-group">
                                                             <span className='hidden sm:inline-flex'>Your Email</span>
-                                                            <input type="text" id="email" name="email" value={user.email} readonly required className="w-full sm:text-left text-center sm:w-80 input input-bordered" />
+                                                            <input type="text" id="email" name="email" value={user.email} readOnly required className="w-full sm:text-left text-center sm:w-80 input input-bordered" />
                                                         </label>
                                                     </div>
                                                     <div className="form-control">
@@ -66,7 +66,7 @@ const Product = () => {
                                                         </label>
                                                         <label className="input-group">
                                                             <span className='hidden sm:inline-flex'>Item Name</span>
-                                                            <input type="text" id="itemName" name="itemName" value={d.productName} readonly required className="w-full sm:text-left text-center sm:w-80 input input-bordered" />
+                                                            <input type="text" id="itemName" name="itemName" value={d.productName} readOnly required className="w-full sm:text-left text-center sm:w-80 input input-bordered" />
                                                         </label>
                                                     </div>
                                                     <div className="form-control">
@@ -75,7 +75,7 @@ const Product = () => {
                                                         </label>
                                                         <label className="input-group">
                                                             <span className='hidden sm:inline-flex'>Product Price</span>
-                                                            <input type="text" id="productPrice" name="productPrice" value={d.price} readonly required className="w-full sm:text-left text-center sm:w-80 input input-bordered" />
+                                                            <input type="text" id="productPrice" name="productPrice" value={d.price} readOnly required className="w-full sm:text-left text-center sm:w-80 input input-bordered" />
                                                         </label>
                                                     </div>
 

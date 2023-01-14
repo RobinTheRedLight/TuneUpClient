@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
             {
                 path: '/categories/:name',
                 element: <PrivateRoute><Product></Product></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://tune-up-server.vercel.app/categories/${params.name}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.name}`)
             },
             {
                 path: '/register',
@@ -62,17 +62,17 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/myproducts/:email',
                 element: <SellerRoute><MyProducts></MyProducts></SellerRoute>,
-                loader: ({ params }) => fetch(`https://tune-up-server.vercel.app/products/${params.email}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.email}`)
             },
             {
                 path: '/dashboard/allsellers',
                 element: <AdminRoute> <AllSellers></AllSellers> </AdminRoute>,
-                loader: () => fetch('https://tune-up-server.vercel.app/users')
+                loader: () => fetch('http://localhost:5000/users')
             },
             {
                 path: '/dashboard/allbuyers',
                 element: <AdminRoute> <AllBuyers></AllBuyers> </AdminRoute>,
-                loader: () => fetch('https://tune-up-server.vercel.app/users')
+                loader: () => fetch('http://localhost:5000/users')
             },
         ]
     }

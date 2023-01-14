@@ -6,7 +6,7 @@ const Home = () => {
     const [categoriesData, setCategoriesData] = useState([]);
 
     useEffect(() => {
-        fetch('https://tune-up-server.vercel.app/categories')
+        fetch('http://localhost:5000/categories')
             .then(res => res.json())
             .then(data => setCategoriesData(data))
     })

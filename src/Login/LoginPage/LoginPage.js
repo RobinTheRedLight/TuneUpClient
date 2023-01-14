@@ -27,7 +27,7 @@ const LoginPage = () => {
                     userEmail: user.email.toLowerCase()
 
                 };
-                fetch('https://tune-up-server.vercel.app/users', {
+                fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -36,13 +36,13 @@ const LoginPage = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
+                        
                         if (data.acknowledged) {
                             console.log(' Registered successfully')
                         }
                     })
                     .catch(er => console.error(er));
-                console.log(allUsers);
+                
                 if (user.uid) {
                     navigate(from, { replace: true });
                 }

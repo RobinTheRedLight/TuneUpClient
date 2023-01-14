@@ -10,7 +10,7 @@ const AddProduct = () => {
     const [categoriesData, setCategoriesData] = useState([]);
 
     useEffect(() => {
-        fetch('https://tune-up-server.vercel.app/categories')
+        fetch('http://localhost:5000/categories')
             .then(res => res.json())
             .then(data => setCategoriesData(data))
     })
@@ -50,7 +50,7 @@ const AddProduct = () => {
 
         console.log(products);
 
-        fetch('https://tune-up-server.vercel.app/products', {
+        fetch('http://localhost:5000/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
