@@ -8,7 +8,7 @@ const MyProducts = () => {
 
     return (
         <div>
-            <div className='p-2 grid grid-cols-3 gap-4'>
+            <div className='p-2 grid grid-cols-2 gap-4'>
                 {
                     orderData.map(d =>
                         <div className="card w-96 bg-base-100 shadow-xl">

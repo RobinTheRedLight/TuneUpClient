@@ -39,13 +39,13 @@ const DashboardLayout = () => {
                             <>
                                 <li><Link to="/dashboard/addproduct">Add A Product</Link></li>
                                 <li><Link to={`/dashboard/myproducts/${user.email}`}>My Products</Link></li>
-                                <li><Link to="/dashboard/managedoctors">My Buyers</Link></li>
+                                <li><Link>My Buyers</Link></li>
                             </>
                         }
                         {
                             user && !isAdmin && !isSeller &&
 
-                            <li><Link to="/dashboard/managedoctors">My Orders</Link></li>
+                            <li><Link>My Orders</Link></li>
 
 
                         }

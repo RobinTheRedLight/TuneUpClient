@@ -11,7 +11,7 @@ const Product = () => {
     console.log(products)
     return (
         <div className='p-2 grid grid-cols-3 gap-4'>
-            <div>
+            
                 {
                     products.map(d =>
                         <div className="card w-96 bg-base-100 shadow-xl">
@@ -110,7 +110,6 @@ const Product = () => {
                     )
                 }
             </div>
-        </div>
     );
 };
 

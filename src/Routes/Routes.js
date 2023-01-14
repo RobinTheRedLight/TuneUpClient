@@ -15,7 +15,10 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import SellerRoute from "./SellerRoute/SellerRoute";
 
 export const router = createBrowserRouter([
-
+    {
+        path: '*',
+        element: <h1 ><img src="2.jpg" alt="" /></h1>
+    },
     {
         path: '/',
         element: <Main></Main>,
@@ -27,7 +30,7 @@ export const router = createBrowserRouter([
             {
                 path: '/categories/:name',
                 element: <PrivateRoute><Product></Product></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.name}`)
+                loader: ({ params }) => fetch(`https://tune-up-server.vercel.app/categories/${params.name}`)
             },
             {
                 path: '/register',
@@ -45,6 +48,10 @@ export const router = createBrowserRouter([
         element: <DashboardLayout></DashboardLayout>,
         children: [
             {
+                path: '*',
+                element: <h1 ><img src="2.jpg" alt="" /></h1>
+            },
+            {
                 path: '/dashboard',
                 element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
             },
@@ -55,17 +62,17 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/myproducts/:email',
                 element: <SellerRoute><MyProducts></MyProducts></SellerRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.email}`)
+                loader: ({ params }) => fetch(`https://tune-up-server.vercel.app/products/${params.email}`)
             },
             {
                 path: '/dashboard/allsellers',
                 element: <AdminRoute> <AllSellers></AllSellers> </AdminRoute>,
-                loader: () => fetch('http://localhost:5000/users')
+                loader: () => fetch('https://tune-up-server.vercel.app/users')
             },
             {
                 path: '/dashboard/allbuyers',
                 element: <AdminRoute> <AllBuyers></AllBuyers> </AdminRoute>,
-                loader: () => fetch('http://localhost:5000/users')
+                loader: () => fetch('https://tune-up-server.vercel.app/users')
             },
         ]
     }
