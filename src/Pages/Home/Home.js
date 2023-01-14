@@ -4,12 +4,25 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
     const [categoriesData, setCategoriesData] = useState([]);
+    const [productsData, setProductsData] = useState([]);
+    const [adData, setAdData] = useState([]);
 
     useEffect(() => {
         fetch('http://localhost:5000/categories')
             .then(res => res.json())
             .then(data => setCategoriesData(data))
-    })
+    }, [])
+    useEffect(() => {
+        fetch('http://localhost:5000/products')
+            .then(res => res.json())
+            .then(data => setProductsData(data))
+    }, [])
+    useEffect(() => {
+        fetch('http://localhost:5000/adData')
+            .then(res => res.json())
+            .then(data => setAdData(data))
+    }, [])
+
     return (
         <div>
             <div className='grid md:grid-cols-5 gap-4 p-2'>
@@ -121,6 +134,43 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+            {
+                adData.length !== 0 ?
+                    <div className='p-2'>
+                        <div className='border-2 border-sky-500'>
+                            <h1 className='text-4xl font-mono pt-2 pb-5'>Advertised Items</h1>
+                            <div className='grid grid-cols-3 gap-4'>
+                                {
+                                    productsData.map(d =>
+                                        d.status &&
+                                        <div key={d._id} className="card w-96 bg-base-100 shadow-xl">
+                                            <figure><img className='w-72 h-72' src={d.photo} alt="" /></figure>
+                                            <div className="card-body">
+                                                <h2 className="card-title">
+                                                    {d.productName}
+                                                    <div className="badge badge-secondary">Resale Price: {d.price} Tk</div>
+                                                </h2>
+                                                <div className='text-left'>
+                                                    <p><span className='text-xl font-mono'>Location:</span> <span className='font-mono'>{d.location}</span></p>
+                                                    <p><span className='text-xl font-mono'>Original Price:</span> <span className='font-mono'>{d.oprice}</span></p>
+                                                    <p><span className='text-xl font-mono'>Years of use:</span> <span className='font-mono'>{d.year} years</span></p>
+                                                    <p><span className='text-xl font-mono'>Date:</span> <span className='font-mono'>{d.date}</span></p>
+                                                    <p><span className='text-xl font-mono'>Seller's Name :</span> <span className='font-mono'>{d.userName}</span></p>
+                                                </div>
+
+                                                <div className="card-actions justify-end">
+                                                    <label htmlFor="my-modal-6" className="btn">Book Now</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    :
+                    <></>
+            }
         </div>
     );
 };
