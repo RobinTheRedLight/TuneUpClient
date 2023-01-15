@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { toast } from 'react-hot-toast';
+import { toast, Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
@@ -61,12 +61,12 @@ const AddProduct = () => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-                    toast(' Added successfully')
+                    alert('Added successfully!');
+                    navigate(`/dashboard/myproducts/${user.email}`);
                 }
             })
             .catch(er => console.error(er));
 
-        navigate(`/dashboard/myproducts/${user.email}`);
     }
 
     if (loading) {
@@ -154,6 +154,7 @@ const AddProduct = () => {
                             <p className="text-red-700"></p>
                         </div>
                         <button className=" btn btn-accent mt-4">Add</button>
+                        <Toaster />
                     </form>
                 </div>
             </div>

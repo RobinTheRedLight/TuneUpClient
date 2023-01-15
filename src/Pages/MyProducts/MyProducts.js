@@ -76,7 +76,16 @@ const MyProducts = () => {
                             <div className="card-body">
                                 <h2 className="card-title">
                                     {d.productName}
-                                    <div className="badge badge-secondary">Resale</div>
+
+                                    <div>
+                                        {
+                                            d.booking ?
+                                                <div className="badge badge-secondary">Sold</div>
+                                                :
+                                                <div className="badge badge-secondary">In Stock</div>
+                                        }
+                                    </div>
+
                                 </h2>
                                 <div className='text-left'>
                                     <p><span className='text-xl font-mono'>Price: </span> <span className='font-mono'>{d.price} Tk</span></p>

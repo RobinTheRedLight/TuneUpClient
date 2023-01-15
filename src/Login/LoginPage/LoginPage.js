@@ -36,13 +36,13 @@ const LoginPage = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        
+
                         if (data.acknowledged) {
                             console.log(' Registered successfully')
                         }
                     })
                     .catch(er => console.error(er));
-                
+
                 if (user.uid) {
                     navigate(from, { replace: true });
                 }
