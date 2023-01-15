@@ -129,6 +129,9 @@ const AddProduct = () => {
                             </label>
                         </div>
                         <div className="form-control mt-2 w-96">
+                            <label className="label">
+                                <span className="label-text">Select Date</span>
+                            </label>
                             <label className="input-group">
                                 <input name="date" type="date" placeholder="Year of purchase" required className="w-full sm:text-left text-center  input input-bordered input-md" />
                             </label>

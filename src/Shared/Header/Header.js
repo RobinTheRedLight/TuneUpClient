@@ -80,7 +80,7 @@ const Header = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0 text-white">
 
-                        <Link className=' text-xl pt-1 px-3' to='/Blog'>Blog</Link>
+                        <Link  className=' text-xl pt-1 px-3' to='/Blog'>Blog</Link>
 
                         <div className='pt-1'>
                             <Link>

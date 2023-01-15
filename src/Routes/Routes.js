@@ -6,6 +6,7 @@ import Registration from "../Login/Registration/Registration";
 import AddProduct from "../Pages/AddProduct/AddProduct";
 import AllBuyers from "../Pages/AllBuyers/AllBuyers";
 import AllSellers from "../Pages/AllSellers/AllSellers";
+import Blog from "../Pages/Blog/Blog";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import Home from "../Pages/Home/Home";
 import MyProducts from "../Pages/MyProducts/MyProducts";
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
                 path: '/login',
                 element: <LoginPage></LoginPage>
             },
+            {
+                path: '/Blog',
+                element: <Blog></Blog>
+            }
         ]
     },
 
