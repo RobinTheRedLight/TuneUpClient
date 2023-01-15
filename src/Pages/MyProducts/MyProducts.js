@@ -82,7 +82,7 @@ const MyProducts = () => {
                                             d.booking ?
                                                 <div className="badge badge-secondary">Sold</div>
                                                 :
-                                                <div className="badge badge-secondary">In Stock</div>
+                                                <div className="badge badge-secondary bg-lime-400">Available</div>
                                         }
                                     </div>
 
@@ -94,8 +94,15 @@ const MyProducts = () => {
                                 <div className="card-actions justify-end">
                                     <button onClick={() => handleDelete(d._id)} className="btn btn-primary">Delete</button>
                                     <Toaster />
-                                    <button onClick={() => handleAdvertise(d._id)} className="btn btn-primary">Advertise</button>
+
+                                    {
+                                        d.booking ?
+                                            <></>
+                                            :
+                                            <button onClick={() => handleAdvertise(d._id)} className="btn btn-primary">Advertise</button>
+                                    }
                                     <Toaster />
+
                                 </div>
                             </div>
                         </div>

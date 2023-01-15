@@ -1,26 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 const AllSellers = () => {
     const sellersData = useLoaderData();
+    const [allSellersData, setAllSellersData] = useState(sellersData);
+    const handleDelete = (e) => {
+        const agree = window.confirm('Are you sure?');
+        if (agree) {
+            fetch(`http://localhost:5000/users/delete/${e}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        const remainingOrders = allSellersData.filter(d => d._id !== e);
+                        setAllSellersData(remainingOrders);
+                        alert('Deleted!');
+                    }
+                })
+        }
+    }
     return (
         <div>
             <div className='p-5'>
                 <h2 className="text-4xl pb-2 font-mono">All Sellers</h2>
                 {
-                    sellersData.length !== 0 ?
+                    allSellersData.length !== 0 ?
                         <div className="overflow-x-auto w-full">
                             <table className="table w-full">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Role</th>
+                                        <th>Action</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {sellersData.map(data =>
+                                    {allSellersData.map(data =>
                                         data.userType === 'Seller' &&
                                         <tr key={data._id}>
                                             <td>
@@ -39,7 +56,7 @@ const AllSellers = () => {
                                                 {data.userEmail}
                                             </td>
                                             <th>
-                                                <button className="btn btn-ghost btn-xs">{data.userType}</button>
+                                                <button onClick={() => handleDelete(data._id)} className='btn btn-primary'>Delete</button>
                                             </th>
                                         </tr>
                                     )

@@ -73,7 +73,7 @@ const Header = () => {
                     </div>
                     <Link className=' font-mono text-white btn btn-ghost normal-case sm:text-2xl' to='/'>TuneUP</Link>
                     <div className="w-10">
-                        <img src="logo.ico" alt='' />
+                        <img src="logo.png" alt='' />
                     </div>
                 </div>
 
